@@ -32,7 +32,7 @@ $(function () {
         var containerWidth = $(".flipbook-container").width();
         var bookWidth = isMobileView ? containerWidth * 0.95 : 800;
         var bookHeight = isMobileView 
-    ? bookWidth * 0.9   // 🔥 slightly taller for mobile
+    ? bookWidth * 0.98   // 🔥 slightly taller for mobile
     : bookWidth * 0.625;
 
         // Destroy previous instance if exists
@@ -407,31 +407,4 @@ $(function () {
 
 });
 
-// Pan functionality
-// function applyPan() {
-//     flipbook.css({
-//         "transition": "none"
-//     });
 
-//     var scale = currentZoom / 100;
-//     var translateX = panOffsetX / scale;
-//     var translateY = panOffsetY / scale;
-
-//     flipbook.css({
-//         "transform": "scale(" + scale + ") translate(" + translateX + "px, " + translateY + "px)"
-//     });
-// }
-
-// function constrainPan() {
-//     var scale = currentZoom / 100;
-//     var flipbookWidth = flipbook.width();
-//     var flipbookHeight = flipbook.height();
-//     var scaledWidth = flipbookWidth * scale;
-//     var scaledHeight = flipbookHeight * scale;
-
-//     var maxX = (scaledWidth - flipbookWidth) / 2;
-//     var maxY = (scaledHeight - flipbookHeight) / 2;
-
-//     panOffsetX = Math.max(-maxX, Math.min(maxX, panOffsetX));
-//     panOffsetY = Math.max(-maxY, Math.min(maxY, panOffsetY));
-// }
