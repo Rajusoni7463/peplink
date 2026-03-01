@@ -9,7 +9,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #eee;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   font-family: Arial, sans-serif;
   overflow: hidden;
   -webkit-user-select: none;
@@ -238,11 +238,18 @@ body.fullscreen {
   line-height: 1;
 }
 
+.arrow-left::before {
+  content: "\25C0";
+  font-size: 24px;
+}
+
+.arrow-right::before {
+  content: "\25B6";
+  font-size: 24px;
+}
+
 .arrow img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  pointer-events: none;
+  display: none;
 }
 
 .arrow:hover {
@@ -578,4 +585,3 @@ body:-ms-fullscreen .flipbook-container {
     padding: 8px 15px;
   }
 }
-
