@@ -30,10 +30,11 @@ $(function () {
         var isMobileView = isMobile();
         var displayMode = isMobileView ? 'single' : 'double';
         var containerWidth = $(".flipbook-container").width();
-        var bookWidth = isMobileView ? containerWidth * 0.95 : 800;
+        var containerHeight = $(".flipbook-container").height();
+        var bookWidth = isMobileView ? containerWidth * 0.99 : 600;
 var bookHeight = isMobileView 
-? bookWidth * 1.35
-: bookWidth * 0.625;
+? Math.min(containerHeight, containerWidth * 1.4)
+: 800;
 
         // Destroy previous instance if exists
         if (flipbook.data('turn')) {
@@ -68,6 +69,10 @@ var bookHeight = isMobileView
         var currentPage = flipbook.turn("page");
         $("#current-page").text(currentPage);
         $("#total-pages").text(totalPages);
+        
+        // Update progress bar
+        var progressPercentage = ((currentPage - 1) / (totalPages - 1)) * 100;
+        $("#progress-fill").css("width", progressPercentage + "%");
     }
 
     // Initialize on load
@@ -221,8 +226,8 @@ var bookHeight = isMobileView
                 if (e.changedTouches.length > 0) {
                     var swipeDistance = touchStartX - e.changedTouches[0].clientX;
 
-                    // Require minimum 50px swipe on mobile
-                    if (Math.abs(swipeDistance) > 50) {
+                    // Require minimum 30px swipe on mobile for better responsiveness
+                    if (Math.abs(swipeDistance) > 30) {
                         isFlipping = true;
 
                         if (swipeDistance > 0) {
