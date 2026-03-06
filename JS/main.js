@@ -31,9 +31,9 @@ $(function () {
         var displayMode = isMobileView ? 'single' : 'double';
         var containerWidth = $(".flipbook-container").width();
         var bookWidth = isMobileView ? containerWidth * 0.95 : 800;
-        var bookHeight = isMobileView 
-    ? bookWidth * 0.98   // 🔥 slightly taller for mobile
-    : bookWidth * 0.625;
+var bookHeight = isMobileView 
+? bookWidth * 1.35
+: bookWidth * 0.625;
 
         // Destroy previous instance if exists
         if (flipbook.data('turn')) {
@@ -45,7 +45,7 @@ $(function () {
             width: bookWidth,
             height: bookHeight,
             autoCenter: true,
-            gradients: isMobileView ? false : true,
+            gradients: true,
             acceleration: true,
             pages: totalPages,
             display: displayMode,
